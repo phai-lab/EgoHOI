@@ -1,6 +1,6 @@
-# EgoHOI Inference Release
+# EgoHOI: Egocentric World Model for Photorealistic Hand-Object Interaction Synthesis
 
-This repository contains the inference-only release for EgoHOI video generation. It packages the release entrypoints, the `egohoi` modules, and a vendored `diffsynth` dependency required by the current code.
+This repository contains the EgoHOI codebase. It packages the release entrypoints, the `egohoi` modules, and a vendored `diffsynth` dependency required by the current code.
 
 ## Repository Layout
 
@@ -47,6 +47,8 @@ This repository does not include model weights or datasets. You must provide pat
 - VAE weights via `--vae_path`
 - image encoder weights via `--image_encoder_path`
 - fine-tuned EgoHOI checkpoint via `--checkpoint`
+
+> Checkpoints and base weights: [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-edisondd%2Fegohoi__ckpt-yellow?logo=huggingface)](https://huggingface.co/edisondd/egohoi_ckpt/tree/main)
 
 ## Dataset Layout
 
@@ -120,8 +122,8 @@ Single-clip inference:
 python egohoi/inference.py \
   --dataset_path /path/to/data_root \
   --split train \
-  --clip_id clip-001849 \
-  --output_path outputs/single/clip-001849.mp4 \
+  --clip_id clip-001947 \
+  --output_path outputs/single/clip-001947.mp4 \
   --dit_path /path/to/dit_01.safetensors,/path/to/dit_02.safetensors \
   --text_encoder_path /path/to/text_encoder.pth \
   --vae_path /path/to/vae.pth \
@@ -140,10 +142,4 @@ Useful options:
 - `--splits train val`: restrict batch inference to selected splits.
 - `--max_clips_per_split N`: run a smoke test on a subset.
 - `--hand_pose_root /path/to/override_pose_root`: override the default pose directory for batch inference.
-- `--debug_shapes` and `--debug_conditions`: print intermediate tensor information for debugging.
 
-## Notes
-
-- This release is organized for inference only.
-- The current code keeps a local copy of `diffsynth` because the EgoHOI pipeline depends on project-specific behavior there.
-- If you plan to publish weights, add separate instructions or download links rather than committing them to the repository.
