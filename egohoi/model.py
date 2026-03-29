@@ -19,7 +19,6 @@ from diffsynth.models.wan_video_dit import sinusoidal_embedding_1d
 from peft import LoraConfig, inject_adapter_in_model
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-#改成了只以第一帧为参考，与infer严格对齐
 
 
 
